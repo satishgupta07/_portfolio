@@ -1,10 +1,10 @@
 .home__container {
-    row-gap: 7rem;
+    row-gap: 5rem;
 }
 
 .home__content {
     grid-template-columns: 116px repeat(2, 1fr);
-    padding-top: 5.5rem;
+    padding-top: 4rem;
     column-gap: 2rem;
     align-items: center;
 }
@@ -59,7 +59,7 @@
 }
 
 .home__img {
-    background: url(../../assests/satish.jpg);
+    background: url(../../assests/satish_portfolio.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
