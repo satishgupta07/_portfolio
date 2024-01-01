@@ -1,6 +1,6 @@
 import Work1 from "../../assests/flavorFiesta.gif";
 import Work2 from "../../assests/work2.jpg";
-import Work3 from "../../assests/work3.jpg";
+import Work3 from "../../assests/quizAdda.gif";
 import Work4 from "../../assests/work4.jpg";
 
 export const projectsData = [
@@ -26,7 +26,7 @@ export const projectsData = [
     image: Work3,
     title: "QuizAdda",
     category: "app",
-    link: "https://github.com/satishgupta07",
+    link: "https://quiz-adda-frontend.vercel.app/login",
     gitHubLink: "https://github.com/satishgupta07/QuizAdda"
   },
   {
