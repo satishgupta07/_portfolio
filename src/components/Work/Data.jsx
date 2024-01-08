@@ -32,6 +32,14 @@ export const projectsData = [
   {
     id: 4,
     image: Work4,
+    title: "ByteCanvas - A blogging web app",
+    category: "web",
+    link: "https://byte-canvas.vercel.app/",
+    gitHubLink: "https://github.com/satishgupta07/ByteCanvas"
+  },
+  {
+    id: 5,
+    image: Work4,
     title: "UnifiedMall - Flipkart Clone",
     category: "app",
     link: "https://github.com/satishgupta07",
