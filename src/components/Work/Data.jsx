@@ -10,16 +10,16 @@ export const projectsData = [
     title: "FlavorFiesta - Food Ordering WebApp",
     category: "web",
     link: "https://flavor-fiesta-frontend.vercel.app/",
-    gitHubLink: "https://github.com/satishgupta07/FlavorFiestaFrontend"
-
+    gitHubLink: "https://github.com/satishgupta07/FlavorFiestaFrontend",
   },
   {
     id: 2,
-    image: Work2,
+    image:
+      "https://res.cloudinary.com/satish07/image/upload/v1704819862/j6l70vvnucne6i1iexmn.png",
     title: "Explorer - Social Media WebApp",
     category: "app",
-    link: "https://github.com/satishgupta07",
-    gitHubLink: "https://github.com/satishgupta07/Explorer"
+    link: "https://explorer-frontend-one.vercel.app/",
+    gitHubLink: "https://github.com/satishgupta07/Explorer",
   },
   {
     id: 3,
@@ -27,22 +27,24 @@ export const projectsData = [
     title: "QuizAdda",
     category: "app",
     link: "https://quiz-adda-frontend.vercel.app/login",
-    gitHubLink: "https://github.com/satishgupta07/QuizAdda"
+    gitHubLink: "https://github.com/satishgupta07/QuizAdda",
   },
   {
     id: 4,
-    image: Work4,
+    image:
+      "https://res.cloudinary.com/satish07/image/upload/v1704820188/kwztcfmq1ma0gfjrktv9.png",
     title: "ByteCanvas - A blogging web app",
     category: "web",
     link: "https://byte-canvas.vercel.app/",
-    gitHubLink: "https://github.com/satishgupta07/ByteCanvas"
+    gitHubLink: "https://github.com/satishgupta07/ByteCanvas",
   },
   {
     id: 5,
-    image: Work4,
+    image:
+      "https://res.cloudinary.com/satish07/image/upload/v1704819862/vy3thblpx8grn3ore7v3.png",
     title: "UnifiedMall - Flipkart Clone",
     category: "app",
-    link: "https://github.com/satishgupta07",
-    gitHubLink: "https://github.com/satishgupta07/UnifiedMall"
-  }
+    link: "https://unified-mall-frontend.vercel.app/",
+    gitHubLink: "https://github.com/satishgupta07/UnifiedMall",
+  },
 ];
