@@ -1,7 +1,7 @@
 import Work1 from "../../assests/flavorFiesta.gif";
-import Work2 from "../../assests/work2.jpg";
+// import Work2 from "../../assests/work2.jpg";
 import Work3 from "../../assests/quizAdda.gif";
-import Work4 from "../../assests/work4.jpg";
+// import Work4 from "../../assests/work4.jpg";
 
 export const projectsData = [
   {
