@@ -27,7 +27,7 @@ const Footer = () => {
 
         <div className="footer__social">
           <a
-            href="https://www.facebook.com/"
+            href="facebook.com/satishkumargupta.07"
             className="footer__social-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
             <i className="bx bxl-facebook"></i>
           </a>
           <a
-            href="https://instagram.com/"
+            href="https://www.instagram.com/satish_kr_gupta/"
             className="footer__social-link"
             target="_blank"
             rel="noopener noreferrer"
