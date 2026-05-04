@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { projectsData, projectsNav } from "./Data";
 import WorkItems from "./WorkItems";
 
@@ -11,41 +12,40 @@ const Works = () => {
     if (item.name === "all") {
       setProjects(projectsData);
     } else {
-      const newProjects = projectsData.filter((project) => {
-        return project.category.toLowerCase() === item.name;
-      });
-      setProjects(newProjects);
+      setProjects(
+        projectsData.filter(
+          (p) => p.category.toLowerCase() === item.name
+        )
+      );
     }
   }, [item]);
 
-  const handleClick = (e, index) => {
-    setItem({ name: e.target.textContent.toLowerCase() });
+  const handleClick = (navItem, index) => {
+    setItem({ name: navItem.name });
     setActive(index);
   };
 
   return (
     <>
       <div className="work__filters">
-        {projectsNav.map((item, index) => {
-          return (
-            <span
-              onClick={(e) => {
-                handleClick(e, index);
-              }}
-              className={`${active === index ? "active-work" : ""} work__item`}
-              key={index}
-            >
-              {item.name}
-            </span>
-          );
-        })}
+        {projectsNav.map((navItem, index) => (
+          <button
+            key={index}
+            onClick={() => handleClick(navItem, index)}
+            className={`work__filter-btn${active === index ? " work__filter-btn--active" : ""}`}
+          >
+            {navItem.name}
+          </button>
+        ))}
       </div>
 
-      <div className="work__container container grid">
-        {projects.map((item) => {
-          return <WorkItems item={item} key={item.id} />;
-        })}
-      </div>
+      <motion.div className="work__grid container" layout>
+        <AnimatePresence>
+          {projects.map((p) => (
+            <WorkItems item={p} key={p.id} />
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </>
   );
 };

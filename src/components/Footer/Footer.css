@@ -1,66 +1,85 @@
 .footer {
-    background-color: var(--container-color);
-    border-top: 1px solid rgba(0, 0, 0, 0);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 0 2rem;
 }
 
 .footer__container {
-    padding: 2rem 0 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  text-align: center;
 }
 
-.footer__title,
+.footer__logo {
+  font-size: 1.3rem;
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.footer__logo-bracket {
+  color: var(--accent);
+  font-family: var(--code-font);
+  font-weight: var(--font-normal);
+}
+
+.footer__logo:hover {
+  color: var(--accent);
+}
+
+.footer__links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .footer__link {
-    color: var(--title-color);
+  font-size: var(--small-font-size);
+  color: var(--text-secondary);
+  transition: var(--transition);
 }
 
-.footer__title {
-    text-align: center;
-    margin-bottom: var(--mb-2);
+.footer__link:hover {
+  color: var(--accent);
 }
 
-.footer__link {
-    color: var(--title-color-dark);
-}
-
-.footer__list {
-    display: flex;
-    justify-content: center;
-    column-gap: 1.5rem;
-    margin-bottom: var(--mb-2);
+.footer__socials {
+  display: flex;
+  gap: 0.75rem;
 }
 
 .footer__social {
-    display: flex;
-    justify-content: center;
-    column-gap: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--accent-alpha);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  transition: var(--transition);
 }
 
-.footer__social-link {
-    background-color: var(--title-color);
-    color: var(--container-color);
-    font-size: 1.125rem;
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    display: inline-flex;
-}
-
-.footer__social-link:hover {
-    background-color: var(--title-color-dark);
+.footer__social:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--accent-glow);
 }
 
 .footer__copy {
-    display: block;
-    margin-top: 4.5rem;
-    color: var(--title-color);
-    text-align: center;
-    font-size: var(--smaller-font-size);
+  font-size: var(--smaller-font-size);
+  color: var(--text-muted);
 }
 
-/*=============== BREAKPOINTS ===============*/
-/* For large devices */
-@media screen and (max-width: 992px) {
-    .footer__social-link {
-        padding: 0.25rem;
-        border-radius: 0.25rem;
-        font-size: 1rem;
-    }
+@media screen and (max-width: 576px) {
+  .footer__links {
+    gap: 1.25rem;
+  }
 }

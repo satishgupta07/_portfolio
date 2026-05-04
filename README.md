@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Satish Kumar Gupta — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A personal developer portfolio built with React, featuring dark/light theme, smooth animations, and a fully responsive layout.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+| | Library |
+|---|---|
+| UI | React 18 |
+| Animations | Framer Motion |
+| Icons | React Icons |
+| Contact | EmailJS |
+| Styling | CSS Variables + BEM |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Dark / Light theme toggle
+- Animated hero with typing effect and spinning border
+- Skills grouped by category in a single card
+- Filterable portfolio with skeleton image loading
+- Contact form with toast notifications and loading state
+- Scroll progress bar, back-to-top, preloader splash screen
+- Fully responsive (mobile-first)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+npm start         # development — http://localhost:3000
+npm run build     # production build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
 
-### `npm run eject`
+```
+src/
+├── components/
+│   ├── Header/         # Navbar + theme toggle
+│   ├── Home/           # Hero section
+│   ├── About/          # Bio + stats
+│   ├── Skills/         # Tech stack card
+│   ├── Qualification/  # Experience & education
+│   ├── Work/           # Portfolio projects + modal
+│   ├── Contact/        # EmailJS contact form
+│   ├── Footer/
+│   ├── Toast/          # Notification system
+│   ├── Preloader/
+│   └── ScrollProgress/
+├── context/
+│   └── ThemeContext.js
+└── assests/            # Images
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Adding a Project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Add an object to `projectsData` in `src/components/Work/Data.jsx`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```js
+{
+  id: 10,
+  image: Work6,
+  title: "Project Name",
+  description: "Short description.",
+  category: "fullstack",  // fullstack | frontend | backend | mobile
+  tags: ["React", "Node.js"],
+  link: "https://live-demo.com",       // null if no live demo
+  gitHubLink: "https://github.com/satishgupta07/repo",
+}
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Satish Kumar Gupta**
+[LinkedIn](https://www.linkedin.com/in/satishkumargupta07/) · [GitHub](https://github.com/satishgupta07) · satishgupta.cse01@gmail.com

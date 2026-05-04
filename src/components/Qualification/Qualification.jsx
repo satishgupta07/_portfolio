@@ -1,143 +1,130 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaBriefcase, FaGraduationCap, FaBuilding, FaCalendarAlt } from "react-icons/fa";
 import "./Qualification.css";
 
-const Qualification = () => {
-  const [toggleState, setToggleState] = useState(1);
+const experience = [
+  {
+    title: "Senior Associate Consultant",
+    company: "Infosys",
+    period: "Jun 2024 - Present",
+    current: true,
+  },
+  {
+    title: "Engineer",
+    company: "Nagarro",
+    period: "Jan 2022 - Jun 2024",
+  },
+  {
+    title: "Associate Engineer",
+    company: "Nagarro",
+    period: "Jan 2021 - Jan 2022",
+  },
+  {
+    title: "Trainee",
+    company: "Nagarro",
+    period: "Oct 2020 - Dec 2020",
+  },
+];
 
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
+const education = [
+  {
+    title: "B.Tech — Computer Science Engineering",
+    company: "UIET MDU, Rohtak",
+    period: "2016 - 2020",
+  },
+  {
+    title: "Senior Secondary (XII)",
+    company: "Kendriya Vidyalaya",
+    period: "2016",
+  },
+];
+
+const contentVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  exit: { opacity: 0, y: -16, transition: { duration: 0.25 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: i * 0.1, duration: 0.4 },
+  }),
+};
+
+const TimelineItem = ({ item, index }) => (
+  <motion.div
+    className="qualification__item"
+    custom={index}
+    variants={itemVariants}
+    initial="hidden"
+    animate="visible"
+    viewport={{ once: true }}
+  >
+    <div className="qualification__dot-wrapper">
+      <div className={`qualification__dot${item.current ? " qualification__dot--current" : ""}`}></div>
+      <div className="qualification__line-segment"></div>
+    </div>
+    <div className={`qualification__card glass-card${item.current ? " qualification__card--current" : ""}`}>
+      {item.current && (
+        <span className="qualification__badge">Current</span>
+      )}
+      <h3 className="qualification__title">{item.title}</h3>
+      <span className="qualification__company">
+        <FaBuilding className="qualification__company-icon" />
+        {item.company}
+      </span>
+      <span className="qualification__period">
+        <FaCalendarAlt />
+        {item.period}
+      </span>
+    </div>
+  </motion.div>
+);
+
+const Qualification = () => {
+  const [tab, setTab] = useState("experience");
 
   return (
-    <section className="qualification section">
-      <h2 className="section__title">Qualification</h2>
-      <span className="section__subtitle">My personel journey</span>
+    <section className="qualification section" id="qualification">
+      <h2 className="section__title">Journey</h2>
+      <span className="section__subtitle">Experience &amp; Education</span>
 
       <div className="qualification__container container">
         <div className="qualification__tabs">
-          <div
-            className={
-              toggleState === 1
-                ? "qualification__button qualification__active button--flex"
-                : "qualification__button button--flex"
-            }
-            onClick={() => toggleTab(1)}
+          <button
+            className={`qualification__tab${tab === "experience" ? " qualification__tab--active" : ""}`}
+            onClick={() => setTab("experience")}
           >
-            <i className="uil uil-graduation-cap qualification__icon"></i>{" "}
+            <FaBriefcase />
             Experience
-          </div>
-          <div
-            className={
-              toggleState === 2
-                ? "qualification__button qualification__active button--flex"
-                : "qualification__button button--flex"
-            }
-            onClick={() => toggleTab(2)}
+          </button>
+          <button
+            className={`qualification__tab${tab === "education" ? " qualification__tab--active" : ""}`}
+            onClick={() => setTab("education")}
           >
-            <i className="uil uil-briefcase-alt qualification__icon"></i>{" "}
+            <FaGraduationCap />
             Education
-          </div>
+          </button>
         </div>
 
-        <div className="qualification__sections">
-          <div
-            className={
-              toggleState === 1
-                ? "qualification__content qualification__content-active"
-                : "qualification__content"
-            }
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tab}
+            className="qualification__timeline"
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">Engineer</h3>
-                <span className="qualification__subtitle">Nagarro</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Jan 2022 - Present
-                </div>
-              </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-
-            <div className="qualification__data">
-              <div></div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-
-              <div>
-                <h3 className="qualification__title">Associate Engineer</h3>
-                <span className="qualification__subtitle">Nagarro</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Jan 2021 - Jan 2022
-                </div>
-              </div>
-            </div>
-
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">Trainee</h3>
-                <span className="qualification__subtitle">Nagarro</span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> Oct 2020 - Dec 2020
-                </div>
-              </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              toggleState === 2
-                ? "qualification__content qualification__content-active"
-                : "qualification__content"
-            }
-          >
-            <div className="qualification__data">
-              <div>
-                <h3 className="qualification__title">
-                  B.Tech, Computer Science Engineering
-                </h3>
-                <span className="qualification__subtitle">
-                  UIET MDU, Rohtak
-                </span>
-                <div className="qualification__calender">
-                  <i className="uil uil-calendar-alt"></i> 2016 - 2020
-                </div>
-              </div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-            </div>
-
-            <div className="qualification__data">
-              <div></div>
-
-              <div>
-                <span className="qualification__rounder"></span>
-                <span className="qualification__line"></span>
-              </div>
-
-              <div>
-                <h3 className="qualification__title">School</h3>
-                <span className="qualification__subtitle">
-                  Kendriya Vidyalaya
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+            {(tab === "experience" ? experience : education).map((item, i) => (
+              <TimelineItem key={i} item={item} index={i} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
