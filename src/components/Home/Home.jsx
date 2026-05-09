@@ -118,11 +118,33 @@ const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <div className="home__img-ring">
-              <div className="home__img-inner">
-                <img src={profileImg} alt="Satish Kumar Gupta" className="home__img" />
+            <div className="home__img-blob" />
+
+            <motion.div
+              className="home__img-float"
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="home__img-ring">
+                <div className="home__img-ring-dashed" />
+                <div className="home__img-inner">
+                  <img src={profileImg} alt="Satish Kumar Gupta" className="home__img" />
+                  <div className="home__img-shine" />
+                </div>
               </div>
-            </div>
+
+              <div className="home__img-orbit">
+                <span className="home__orbit-dot home__orbit-dot--1" />
+                <span className="home__orbit-dot home__orbit-dot--2" />
+                <span className="home__orbit-dot home__orbit-dot--3" />
+              </div>
+
+              <span className="home__img-sparkle home__img-sparkle--1" />
+              <span className="home__img-sparkle home__img-sparkle--2" />
+              <span className="home__img-sparkle home__img-sparkle--3" />
+            </motion.div>
+
             <div className="home__img-glow" />
           </motion.div>
 

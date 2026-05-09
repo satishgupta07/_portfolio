@@ -56,26 +56,85 @@
   justify-content: center;
   align-items: center;
   order: 1;
+  width: 320px;
+  height: 320px;
+}
+
+.home__img-float {
+  position: relative;
+  width: 246px;
+  height: 246px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: filter 0.4s ease;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.home__img-float:hover {
+  filter: drop-shadow(0 12px 30px var(--accent-glow));
 }
 
 .home__img-ring {
-  width: 246px;
-  height: 246px;
-  border-radius: 50%;
-  padding: 3px;
-  background: conic-gradient(from 0deg, var(--accent), #a78bfa, #60a5fa, var(--accent));
-  animation: ring-spin 4s linear infinite;
-  box-shadow: 0 0 30px var(--accent-glow);
   position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 30px var(--accent-glow);
   flex-shrink: 0;
 }
 
+/* Rotating gradient border — sits BEHIND the image so the image itself stays still */
+.home__img-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--accent),
+    #a78bfa,
+    #60a5fa,
+    #f472b6,
+    var(--accent)
+  );
+  animation: ring-spin 6s linear infinite;
+  z-index: 0;
+}
+
+/* Pulsing aura ring */
+.home__img-ring::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  animation: aura-pulse 2.6s ease-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home__img-ring-dashed {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--accent);
+  opacity: 0.45;
+  animation: ring-spin-reverse 18s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .home__img-inner {
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
   background: var(--bg-primary);
+  z-index: 1;
 }
 
 .home__img {
@@ -84,12 +143,37 @@
   object-fit: cover;
   object-position: top center;
   display: block;
+  transition: transform 0.6s ease;
 }
 
+.home__img-float:hover .home__img {
+  transform: scale(1.08);
+}
+
+/* Shimmer streak across image */
+.home__img-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 48%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.18) 52%,
+    transparent 70%
+  );
+  background-size: 250% 250%;
+  animation: shine-sweep 4.5s ease-in-out infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Soft outer glow */
 .home__img-glow {
   position: absolute;
-  width: 290px;
-  height: 290px;
+  width: 320px;
+  height: 320px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -100,13 +184,166 @@
   pointer-events: none;
 }
 
+/* Morphing gradient blob behind the image */
+.home__img-blob {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    var(--accent) 0%,
+    #a78bfa 25%,
+    #60a5fa 50%,
+    #f472b6 75%,
+    var(--accent) 100%
+  );
+  filter: blur(50px);
+  opacity: 0.35;
+  z-index: -2;
+  animation: blob-morph 12s ease-in-out infinite, blob-spin 22s linear infinite;
+  pointer-events: none;
+}
+
+/* Orbiting dots */
+.home__img-orbit {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.home__orbit-dot {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+}
+
+.home__orbit-dot--1 {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+  animation: orbit 7s linear infinite;
+}
+
+.home__orbit-dot--2 {
+  width: 8px;
+  height: 8px;
+  background: #a78bfa;
+  box-shadow: 0 0 12px #a78bfa;
+  animation: orbit 9s linear infinite reverse;
+  animation-delay: -2s;
+}
+
+.home__orbit-dot--3 {
+  width: 6px;
+  height: 6px;
+  background: #60a5fa;
+  box-shadow: 0 0 10px #60a5fa;
+  animation: orbit 11s linear infinite;
+  animation-delay: -5s;
+}
+
+/* Sparkle stars */
+.home__img-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff, 0 0 20px var(--accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.home__img-sparkle--1 {
+  top: 8%;
+  right: 12%;
+  animation: sparkle 3s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.home__img-sparkle--2 {
+  bottom: 18%;
+  left: 6%;
+  animation: sparkle 3.6s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.home__img-sparkle--3 {
+  top: 55%;
+  right: 0%;
+  width: 4px;
+  height: 4px;
+  animation: sparkle 4s ease-in-out infinite;
+  animation-delay: 2.1s;
+}
+
 @keyframes ring-spin {
   to { transform: rotate(360deg); }
 }
 
+@keyframes ring-spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes aura-pulse {
+  0%   { transform: scale(0.95); opacity: 0.55; }
+  70%  { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 0.85; }
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.85; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+@keyframes shine-sweep {
+  0%   { background-position: 200% 200%; opacity: 0; }
+  35%  { opacity: 1; }
+  60%  { background-position: -50% -50%; opacity: 1; }
+  100% { background-position: -50% -50%; opacity: 0; }
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 42% 58% 70% 30% / 45% 30% 70% 55%; }
+  25%      { border-radius: 60% 40% 35% 65% / 55% 60% 40% 45%; }
+  50%      { border-radius: 30% 70% 55% 45% / 65% 45% 55% 35%; }
+  75%      { border-radius: 55% 45% 60% 40% / 40% 65% 35% 60%; }
+}
+
+@keyframes blob-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50%      { opacity: 1; transform: scale(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__img-ring,
+  .home__img-ring::before,
+  .home__img-ring::after,
+  .home__img-ring-dashed,
+  .home__img-shine,
+  .home__img-glow,
+  .home__img-blob,
+  .home__orbit-dot,
+  .home__img-sparkle,
+  .home__img-float {
+    animation: none !important;
+  }
 }
 
 /* ===== DATA ===== */
@@ -244,8 +481,13 @@
     gap: 1.5rem;
   }
 
-  .home__img-ring { width: 210px; height: 210px; }
-  .home__img-glow { width: 250px; height: 250px; }
+  .home__img-wrapper { width: 280px; height: 280px; }
+  .home__img-float { width: 210px; height: 210px; }
+  .home__img-glow { width: 280px; height: 280px; }
+  .home__img-blob { width: 320px; height: 320px; }
+  .home__orbit-dot--1,
+  .home__orbit-dot--2,
+  .home__orbit-dot--3 { animation-name: orbit-md; }
 }
 
 @media screen and (max-width: 768px) {
@@ -269,10 +511,16 @@
   .home__img-wrapper {
     order: 1;
     margin-bottom: 1rem;
+    width: 240px;
+    height: 240px;
   }
 
-  .home__img-ring { width: 180px; height: 180px; }
-  .home__img-glow { width: 220px; height: 220px; }
+  .home__img-float { width: 180px; height: 180px; }
+  .home__img-glow { width: 250px; height: 250px; }
+  .home__img-blob { width: 280px; height: 280px; }
+  .home__orbit-dot--1,
+  .home__orbit-dot--2,
+  .home__orbit-dot--3 { animation-name: orbit-sm; }
 
   .home__data {
     order: 2;
@@ -292,10 +540,30 @@
 }
 
 @media screen and (max-width: 350px) {
-  .home__img-ring { width: 150px; height: 150px; }
-  .home__img-glow { width: 185px; height: 185px; }
+  .home__img-wrapper { width: 200px; height: 200px; }
+  .home__img-float { width: 150px; height: 150px; }
+  .home__img-glow { width: 210px; height: 210px; }
+  .home__img-blob { width: 240px; height: 240px; }
+  .home__orbit-dot--1,
+  .home__orbit-dot--2,
+  .home__orbit-dot--3 { animation-name: orbit-xs; }
 
   .home__title {
     font-size: 2rem;
   }
+}
+
+@keyframes orbit-md {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes orbit-sm {
+  from { transform: rotate(0deg) translateX(105px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(105px) rotate(-360deg); }
+}
+
+@keyframes orbit-xs {
+  from { transform: rotate(0deg) translateX(88px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(88px) rotate(-360deg); }
 }
